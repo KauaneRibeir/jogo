@@ -62,6 +62,7 @@ const listar = () => {
     return false
    }
 }
+
 const atualizar = () => {
     if(!listar()){
         return
