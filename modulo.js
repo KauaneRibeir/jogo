@@ -43,12 +43,12 @@ console.log("Jogo cadastrado com sucesso!")
 };
 
 const listar = () => {
-   if(jogos.length == 0){
+if(jogos.length == 0){
     console.log ("Nenhum jogo encontrado")
     return false
-   }else{
+}else{
     jogos.forEach((jogo, indice) => {
-  
+
     console,log(`
     ${indice + 1}. 
     Nome: ${jogo.nome}
@@ -60,19 +60,18 @@ const listar = () => {
     `)
     })
     return false
-   }
+}
 }
 
 const atualizar = () => {
     if(!listar()){
         return
     }
-    const indice =prompt("Qual o indice que deseja atualizar? ") - 1;
-    const jogo = modelo()
+
+    const indice = prompt("Qual o indice que deseja atualizar? ") - 1;
+    const jogo = modelo();
 if(jogo != undefined &&
-    indice >= 0 &&
-    indice > jogos.length 
-){ 
+    validarindice(indice)){
     jogos[indice] = jogo
     console.log("Jogo atializado com sucesso!")
 }else{
@@ -87,18 +86,15 @@ const remover = () => {
 const indice = prompt("Qual indice deseja remover? ") -1 
 if (validarindice(indice)){
     jogos.splice(indice, 1)
-    console.log ("Falha na remoção")
+    console.log ("Jogo removido com sucesso!")
 }else{
     console.log("Falha na remoção")
 }
 };
 
-
-
-
-
-
-
-
-
-
+modulo.exports = {
+criar,
+atualizar,
+listar,
+remover
+}
