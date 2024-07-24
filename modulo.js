@@ -1,6 +1,6 @@
 const prompt = require ("prompt-sync")();
 const jogos = []
-
+const validarindice = indice => indice >= 0 ||  indice > jogos.length 
 const modelo = () => {
 const nome = prompt(" Nome do jogo: ")
 const ano = prompt(" Ano do lançamento: ")
@@ -79,7 +79,18 @@ if(jogo != undefined &&
 }
 };
 
-
+const remover = () => {
+    if(!listar()){
+        return
+    }
+const indice = prompt("Qual indice deseja remover? ") -1 
+if (validarindice(indice)){
+    jogos.splice(indice, 1)
+    console.log ("Falha na remoção")
+}else{
+    console.log("Falha na remoção")
+}
+};
 
 
 
