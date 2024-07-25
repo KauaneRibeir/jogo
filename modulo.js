@@ -1,14 +1,22 @@
 const prompt = require ("prompt-sync")();
 const jogos = []
 const validarindice = indice => indice >= 0 ||  indice > jogos.length 
-const modelo = () => {
+const atualvalidar = indice => {
+    if(jogos.length == 1 
+        && indice ==0) {
+            return false
+        }
+        return true
+}
+
+const modelo = (indice) => {
 const nome = prompt(" Nome do jogo: ")
 const ano = prompt(" Ano do lançamento: ")
 const duracao = prompt(" Duraçao média em horas: ")
 const preco = prompt(" Preço: ")
 const estudio = prompt(" Qual é o estudio do jogo?: ")
 let sequencia = -1
-if(listar()){
+if(listar() && (jogos.length  !=1 || indice!= 0))
 sequencia = prompt(" Qual é a a sequencia do jogo? Digit 0 se não houver.") -1;   
 }
 
@@ -32,10 +40,9 @@ return {
 } else {
     console.log ("Dados invalidos.")
 }
-};
 
 const criar =() => {
-const jogo = modelo();
+const jogo = modelo(indice);
 if (jogo!= undefined){
 jogos.push(jogo);
 console.log("Jogo cadastrado com sucesso!")
@@ -92,7 +99,7 @@ if (validarindice(indice)){
 }
 };
 
-modulo.exports = {
+module.exports = {
 criar,
 atualizar,
 listar,
